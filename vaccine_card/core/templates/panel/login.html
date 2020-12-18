@@ -1,0 +1,92 @@
+{% load static %}
+
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title> Vacina+ | LAIS</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/fontawesome.min.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/coreui.css' %}">
+    <link rel="stylesheet" href="{% static 'css/toastr.min.css' %}">
+
+</head>
+
+<body class="app flex-row align-items-center">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card-group mb-0">
+                    <div class="card p-4">
+                        <div class="card-body">
+                            <div class="col-md-12 text-center">
+                                <h1>Vacina+</h1>
+                            </div>
+
+                            <hr />
+                            <h3>Acesso</h3>
+                            <p class="text-muted">Preencha seus dados</p>
+
+                            <form id="login-form" action="." method="POST" novalidate="">
+                                {% csrf_token %}
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fa fa-user"></i>
+                                        </span>
+                                    </div>
+                                    <input class="form-control" type="text" placeholder="Usuário" name="username">
+                                </div>
+                                <div class="input-group mb-4">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fa fa-lock"></i>
+                                        </span>
+                                    </div>
+                                    <input type="password" class="form-control" placeholder="Senha" name="password">
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <button type="submit" class="btn btn-danger color-white px-4">Acessar</button>
+                                    </div>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{% static 'js/jquery.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/toastr.min.js' %}"></script>
+    <script src="{% static 'js/fontawesome.min.js' %}"></script>
+
+    <script src="{% static 'js/coreui.js' %}"></script>
+
+    <script>
+        $(function () {
+
+            {% if messages %}
+            {% for message in messages %}
+            {% if message.tags == 'success' %}
+            toastr.success('{{ message }}');
+            {% else %}
+            toastr.error('{{ message }}');
+            {% endif %}
+            {% endfor %}
+            {% endif %}
+        });
+    </script>
+
+</body>
+
+</html>

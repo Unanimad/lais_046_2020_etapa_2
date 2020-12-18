@@ -1,0 +1,207 @@
+{% load static %}
+<!DOCTYPE html>
+<!--
+* CoreUI - Free Bootstrap Admin Template
+* @version v2.1.15
+* @link https://coreui.io
+* Copyright (c) 2018 creativeLabs Łukasz Holeczek
+* Licensed under MIT (https://coreui.io/license)
+-->
+
+<html>
+
+<head>
+    <base href="./">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta name="description" content="DescMiner - Ministério Público de Sergipe">
+
+    <title>{{ head_title }} - Vacina+ - LAIS</title>
+
+    <!-- Icons-->
+    <link rel="icon" type="image/ico" href="https://lais.huol.ufrn.br/wp-content/themes/lais/img/logo.png" sizes="any" />
+
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/fontawesome.min.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/coreui.css' %}">
+    <link rel="stylesheet" href="{% static 'css/toastr.min.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/project.css' %}">
+
+    {% block custom_css %}
+    {% endblock %}
+
+</head>
+
+<head>
+
+<body class="app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show">
+    <header class="app-header navbar">
+        <button class="navbar-toggler sidebar-toggler d-lg-none mr-auto" type="button" data-toggle="sidebar-show">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="#">
+            <img class="navbar-brand-full" src="https://lais.huol.ufrn.br/wp-content/themes/lais/img/logo.png" width="89" alt="CoreUI Logo">
+            <img class="navbar-brand-minimized" src="img/brand/sygnet.svg" width="30" height="30" alt="CoreUI Logo">
+        </a>
+        <button class="navbar-toggler sidebar-toggler d-md-down-none" type="button" data-toggle="sidebar-lg-show">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <ul class="nav navbar-nav ml-auto mr-3">
+            <li class="nav-item dropdown">
+                <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+                    aria-expanded="false">
+                    {{ user.first_name }} {{ user.last_name }} <i class="fa fa-user"></i>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right">
+                    <div class="dropdown-header text-center">
+                        <strong>Conta</strong>
+                    </div>
+                    <a class="dropdown-item" href="{% url 'panel:logout' %}">
+                        <i class="fa fa-lock"></i> Logout</a>
+                </div>
+            </li>
+        </ul>
+        <button class="navbar-toggler aside-menu-toggler d-lg-none" type="button" data-toggle="aside-menu-show">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </header>
+
+    <div class="app-body">
+        <div class="sidebar">
+            <nav class="sidebar-nav">
+
+                <ul class="nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'panel:index' %}">
+                            <i class="fas fa-tachometer-alt"></i> Painel
+                        </a>
+                    </li>
+                    <li class="nav-title"> Logística</li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="">
+                            <i class="fas fa-layer-group"></i> Estoque</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="">
+                            <i class="fas fa-hospital"></i> Estabelecimento de Saúde</a>
+                    </li>
+
+                    <li class="nav-title"> Vacinação</li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="">
+                            <i class="fas fa-calendar-alt"></i> Calendário</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="">
+                            <i class="fas fa-diagnoses"></i> Vacinar</a>
+                    </li>
+
+                    <li class="nav-title"> Inteligência em Saúde</li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="">
+                            <i class="fas fa-question"></i> Panorama de vacinação </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="">
+                            <i class="fas fa-question"></i> Pacientes com vacinas à vencer/vencidas </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="">
+                            <i class="fas fa-question"></i> Lotes à vencer </a>
+                    </li>
+
+                    <li class="nav-title"> Administração</li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="">
+                            <i class="fas fa-user"></i> Paciente</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="">
+                            <i class="fas fa-user-md"></i> Profissional</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="">
+                            <i class="fas fa-hospital"></i> Coordenador</a>
+                    </li>
+
+                </ul>
+            </nav>
+        </div>
+
+        <!-- Main content -->
+        <main class="main">
+
+            <!-- Breadcrumb Menu-->
+            <ol class="breadcrumb text-danger">
+                <li class="breadcrumb-item active"><a href="{% url 'panel:index' %}">Início</a></li>
+
+                {% for bread in breadcrump %}
+
+                <li class="breadcrumb-item">
+                    <a href="{% url bread.link %}">bread.name</a>
+                </li>
+
+                {% endfor %}
+
+
+            </ol>
+
+            <div class="container-fluid">
+
+                <div class="animated fadeIn">
+                    {% block content %} {% endblock %}
+                </div>
+
+            </div>
+            <!-- /.conainer-fluid -->
+        </main>
+
+    </div>
+
+    <footer class="app-footer text-danger">
+        <span class="font-weight-bold">Vacina+ | LAIS</span>
+    </footer>
+
+    <script src="{% static 'js/jquery.js' %}"></script>
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/fontawesome.min.js' %}"></script>
+    <script src="{% static 'js/toastr.min.js' %}"></script>
+
+    <script src="{% static 'js/coreui.js' %}"></script>
+    <script src="{% static 'js/custom.js' %}"></script>
+
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip();
+
+            {% if messages %}
+            {% for message in messages %}
+            {% if message.tags == 'success' %}
+            toastr.success('{{ message }}');
+            {% else %}
+            toastr.error('{{ message }}');
+            {% endif %}
+            {% endfor %}
+            {% endif %}
+        });
+    </script>
+
+    {% block custom_js %} {% endblock %}
+
+</body>
+
+</html>
