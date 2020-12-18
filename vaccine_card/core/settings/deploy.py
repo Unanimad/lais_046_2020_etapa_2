@@ -2,6 +2,8 @@ import os
 
 import dj_database_url
 
+from vaccine_card.core.settings.base import *
+
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', '')
 
 DEBUG = False
