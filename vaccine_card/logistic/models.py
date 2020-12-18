@@ -14,7 +14,8 @@ class State(models.Model):
 
 
 class City(models.Model):
-    name = models.CharField(max_length=30, verbose_name='Nome')
+    name = models.CharField(max_length=50, verbose_name='Nome')
+    state = models.ForeignKey(State, on_delete=models.CASCADE, verbose_name=State._meta.verbose_name)
 
     class Meta:
         verbose_name = 'Município'
