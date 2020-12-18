@@ -15,7 +15,6 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <meta name="description" content="DescMiner - Ministério Público de Sergipe">
 
     <title>{{ head_title }} - Vacina+ - LAIS</title>
 
@@ -43,8 +42,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <a class="navbar-brand" href="#">
-            <img class="navbar-brand-full" src="https://lais.huol.ufrn.br/wp-content/themes/lais/img/logo.png" width="89" alt="CoreUI Logo">
-            <img class="navbar-brand-minimized" src="img/brand/sygnet.svg" width="30" height="30" alt="CoreUI Logo">
+            <img class="navbar-brand-full" src="https://lais.huol.ufrn.br/wp-content/themes/lais/img/logo.png" width="89" alt="LAIS Logo">
         </a>
         <button class="navbar-toggler sidebar-toggler d-md-down-none" type="button" data-toggle="sidebar-lg-show">
             <span class="navbar-toggler-icon"></span>
@@ -87,6 +85,11 @@
                     </li>
 
                     <li class="nav-item">
+                        <a class="nav-link" href="{% url 'panel:vaccination:vaccines' %}">
+                            <i class="fas fa-syringe"></i> Vacinas</a>
+                    </li>
+
+                    <li class="nav-item">
                         <a class="nav-link" href="">
                             <i class="fas fa-hospital"></i> Estabelecimento de Saúde</a>
                     </li>
@@ -113,11 +116,6 @@
                     <li class="nav-item">
                         <a class="nav-link" href="">
                             <i class="fas fa-question"></i> Pacientes com vacinas à vencer/vencidas </a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="">
-                            <i class="fas fa-question"></i> Lotes à vencer </a>
                     </li>
 
                     <li class="nav-title"> Administração</li>
@@ -151,7 +149,7 @@
                 {% for bread in breadcrump %}
 
                 <li class="breadcrumb-item">
-                    <a href="{% url bread.link %}">bread.name</a>
+                    <a href="{% url bread.link %}">{{ bread.name }}</a>
                 </li>
 
                 {% endfor %}

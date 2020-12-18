@@ -7,16 +7,15 @@
 {% endblock %}
 
 {% block content %}
-    <div class="row">
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-header">
-                    <strong>{{ title }}</strong>
-                </div>
-
-                <form method="POST">
+    <form method="POST">
+    {% csrf_token %}
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <strong>{{ title }}</strong>
+                    </div>
                     <div class="card-body">
-                        {% csrf_token %}
                         {{ form.as_p }}
                     </div>
                     <div class="card-footer">
@@ -24,11 +23,11 @@
                         </button>
                         <button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i> Limpar</button>
                     </div>
-                </form>
 
+                </div>
             </div>
         </div>
-    </div>
+    </form>
 {% endblock %}
 
 {% block custom_js %}
