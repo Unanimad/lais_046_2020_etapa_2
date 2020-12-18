@@ -10,6 +10,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
+import os
+
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -34,9 +36,11 @@ INSTALLED_APPS = [
     'vaccine_card.core',
     'vaccine_card.api',
     'vaccine_card.scheduling',
-    'vaccine_card.card',
+    'vaccine_card.logistic',
+    'vaccine_card.vaccination',
 
-    'rest_framework'
+    'rest_framework',
+    'simple_history'
 ]
 
 MIDDLEWARE = [
