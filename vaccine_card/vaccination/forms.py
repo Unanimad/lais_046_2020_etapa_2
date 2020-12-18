@@ -1,24 +1,14 @@
 from django import forms
 
-from .models import Vaccine
+from .models import Vaccine, Reinforcement
 
 
 class VaccineForm(forms.ModelForm):
     class Meta:
         model = Vaccine
-        fields = ['name', 'age', 'age_min', 'age_max', 'prevent_diseases', 'reinforcement']
+        fields = ['name', 'prevent_diseases']
         widgets = {
             'name': forms.TextInput(
-                attrs={
-                    'class': 'form-control',
-                    'required': True
-                }),
-            'age_min': forms.TextInput(
-                attrs={
-                    'class': 'form-control',
-                    'required': True
-                }),
-            'age_max': forms.TextInput(
                 attrs={
                     'class': 'form-control',
                     'required': True
@@ -29,10 +19,23 @@ class VaccineForm(forms.ModelForm):
                     'style': 'resize: none; height: 100px',
                     'rows': '10',
                     'required': False
-            }),
-            'reinforcement': forms.Select(
+                }),
+        }
+
+
+class ReinforcementForm(forms.ModelForm):
+    class Meta:
+        model = Reinforcement
+        fields = ['age', 'age_min', 'age_max']
+        widgets = {
+            'age_min': forms.TextInput(
                 attrs={
-                    'required': False
-                }
-            )
+                    'class': 'form-control',
+                    'required': True
+                }),
+            'age_max': forms.TextInput(
+                attrs={
+                    'class': 'form-control',
+                    'required': True
+                }),
         }
