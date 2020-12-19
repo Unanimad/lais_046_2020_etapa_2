@@ -10,7 +10,7 @@ from .models import Vaccine
 
 @login_required
 def vaccines(request):
-    template_name = 'panel/list.html'
+    template_name = 'default/list.html'
 
     context = {
         'head_title': Vaccine._meta.verbose_name_plural,
@@ -27,7 +27,7 @@ def vaccines(request):
 
 @login_required
 def add_vaccine(request):
-    template_name = 'panel/add.html'
+    template_name = 'default/add.html'
 
     form = VaccineForm(auto_id=False)
     form_aux = ReinforcementForm(auto_id=False)
@@ -57,7 +57,7 @@ def add_vaccine(request):
 
 @login_required
 def edit_vaccine(request, pk):
-    template_name = 'panel/add.html'
+    template_name = 'default/add.html'
 
     instance = Vaccine.objects.get(pk=pk)
 
@@ -86,7 +86,7 @@ def edit_vaccine(request, pk):
 
 @login_required
 def vaccine(request, pk):
-    template_name = 'panel/list.html'
+    template_name = 'default/list.html'
 
     instance = Vaccine.objects.get(pk=pk)
 
@@ -107,13 +107,13 @@ def del_vaccine(request):
             Vaccine.objects.filter(pk=pk).delete()
 
         except:
-            return dump_json({'err': True, 'text': 'Não foi possível deletar a vacina.'})
+            return dump_json({'err': True, 'text': 'Não foi possível deletar o objeto.'})
 
         else:
 
             context = {
                 'err': False,
-                'text': 'Vacina deletada com sucesso.'
+                'text': 'Objeto deletada com sucesso.'
             }
 
         return dump_json(context)
