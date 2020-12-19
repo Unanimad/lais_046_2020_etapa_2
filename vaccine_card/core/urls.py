@@ -8,6 +8,8 @@ urlpatterns = [
     path('', index, name='index'),
     path('logout/', logout, name='logout'),
 
-    path('logistic/', include('vaccine_card.logistic.urls', namespace='logistic')),
-    path('vaccination/', include('vaccine_card.vaccination.urls', namespace='vaccination'))
+    path('panel/logistic/', include('vaccine_card.logistic.urls', namespace='logistic')),
+    path('panel/vaccination/', include('vaccine_card.vaccination.urls', namespace='vaccination')),
+
+    path('app/', include('vaccine_card.app.urls', namespace='app')),
 ]

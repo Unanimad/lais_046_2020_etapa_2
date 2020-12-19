@@ -22,7 +22,7 @@ from vaccine_card.core.views import login
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('panel/', include('vaccine_card.core.urls', namespace='panel')),
+    path('', include('vaccine_card.core.urls', namespace='panel')),
     # path('^api/', include('vaccine_card.api.urls', namespace='api')),
     path('accounts/login/', login, name='login'),
     path('login/', login, name='login'),

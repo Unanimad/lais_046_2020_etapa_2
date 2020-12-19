@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'vaccine_card.scheduling',
     'vaccine_card.logistic',
     'vaccine_card.vaccination',
+    'vaccine_card.app',
 
     'rest_framework',
     'simple_history'
