@@ -1,0 +1,85 @@
+{% extends 'patient_app/base.html' %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="input-group mb-3">
+            <span class="input-group-text"><i class="fas fa-search"></i></span>
+            <input type="text" class="form-control" id="filter" placeholder="Procurar" aria-label="Procurar"
+                   aria-describedby="basic-addon1">
+        </div>
+    </div>
+
+    <div class="row" id="searchArea">
+        <div class="col-md-6 mb-3">
+            <div class="bs-callout bs-callout-danger">
+                <div class="row">
+                    <div class="col">
+                        <span class="badge bg-danger text-white">21/12/2020</span>
+                        <span class="badge bg-danger text-white">HUSE/Sergipe</span>
+                        <hr/>
+                        <h5>Influenza</h5>
+                        <span>O que a vacina previne</span>
+                        <hr/>
+                        <button class="btn btn-primary">Agendar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 mb-3">
+            <div class="bs-callout bs-callout-success">
+                <div class="row">
+                    <div class="col">
+                        <span class="badge bg-success">21/12/2020</span>
+                        <span class="badge bg-success">HUSE/Sergipe</span>
+                        <hr/>
+                        <h5>Nome da Vacina</h5>
+                        <span>O que a vacina previne</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 mb-3">
+            <div class="bs-callout bs-callout-warning">
+                <div class="row">
+                    <div class="col">
+                        <span class="badge bg-warning">21/12/2020</span>
+                        <span class="badge bg-warning">HUSE/Sergipe</span>
+                        <hr/>
+                        <h5>Nome da Vacina</h5>
+                        <span>O que a vacina previne</span>
+                        <hr/>
+                        <button class="btn btn-primary">Agendar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block custom_js %}
+    <script>
+        $(function () {
+            const inputFilter = document.getElementById("filter");
+            const nodeSearch = document
+                .getElementById("searchArea")
+                .getElementsByTagName("div");
+
+            function SearchContent() {
+                const inputFilterValue = inputFilter.value.toLowerCase();
+
+                for (let node of nodeSearch) {
+                    node.innerText.toLowerCase().includes(inputFilterValue)
+                        ? (node.style.display = "block")
+                        : (node.style.display = "none");
+                }
+            }
+
+            inputFilter.addEventListener("keyup", SearchContent);
+
+        });
+    </script>
+{% endblock %}

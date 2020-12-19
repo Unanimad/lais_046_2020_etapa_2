@@ -1,0 +1,41 @@
+{% extends 'patient_app/base.html' %}
+
+{% load static %}
+
+{% block custom_css %}
+    <link rel="stylesheet" href="{% static 'css/select2.min.css' %}">
+{% endblock %}
+
+{% block content %}
+
+    <form method="POST">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <strong>Agendamento</strong>
+                    </div>
+                    <div class="card-body">
+                        {{ form.as_p }}
+                    </div>
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-sm btn-success"><i class="fas fa-check"></i> Agendar
+                        </button>
+                        <button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i> Limpar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+{% endblock %}
+{% block custom_js %}
+    <script src="{% static 'js/select2.min.js' %}"></script>
+
+    <script>
+        $(function () {
+            $('select').select2();
+        });
+    </script>
+{% endblock %}

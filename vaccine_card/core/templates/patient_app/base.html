@@ -1,0 +1,83 @@
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Aplicativo do Paciente | Vacina+</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/project.css' %}">
+    <link rel="stylesheet" href="{% static 'css/fontawesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/toastr.min.css' %}">
+    {% block custom_css %}{% endblock %}
+
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+        <a class="navbar-brand" href="#">Vacina+</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+                aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'panel:app:patient_index' %}">Início</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Meu Cartão de Vacina</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Agendar Vacinação</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Logout</a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+
+    <main role="main" class="container">
+        <div style="padding: 5rem 1.5rem;">
+            {% block content %}{% endblock %}
+        </div>
+    </main>
+
+    <script src="{% static 'js/jquery.js' %}"></script>
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/fontawesome.min.js' %}"></script>
+    <script src="{% static 'js/toastr.min.js' %}"></script>
+
+    {% block custom_js %}{% endblock %}
+
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip();
+
+            {% if messages %}
+            {% for message in messages %}
+            {% if message.tags == 'success' %}
+            toastr.success('{{ message }}');
+            {% else %}
+            toastr.error('{{ message }}');
+            {% endif %}
+            {% endfor %}
+            {% endif %}
+        });
+    </script>
+
+    </body>
+</html>
