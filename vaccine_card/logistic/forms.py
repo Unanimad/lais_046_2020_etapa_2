@@ -6,11 +6,11 @@ from .models import HealthCenter, Address
 class HealthCenterForm(forms.ModelForm):
     class Meta:
         model = HealthCenter
-        fields = ['cnes', 'cnpj', 'razao_social']
+        fields = ['cnes', 'cnpj', 'name']
         widgets = {
             'cnes': forms.NumberInput(attrs={'class': 'form-control'}),
             'cnpj': forms.NumberInput(attrs={'class': 'form-control'}),
-            'razao_social': forms.TextInput(attrs={'class': 'form-control'})
+            'name': forms.TextInput(attrs={'class': 'form-control'})
         }
 
 

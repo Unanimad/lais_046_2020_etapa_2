@@ -41,7 +41,7 @@ class Address(models.Model):
 class HealthCenter(models.Model):
     cnes = models.CharField(max_length=7, verbose_name='CNES')
     cnpj = models.CharField(max_length=14, verbose_name='CNPJ')
-    razao_social = models.CharField(max_length=255, verbose_name='Razão Social')
+    name = models.CharField(max_length=255, verbose_name='Razão Social')
 
     created_at = models.DateTimeField(auto_now_add=True, auto_now=False, verbose_name='Criado em:')
     updated_at = models.DateTimeField(auto_now_add=False, auto_now=True, verbose_name='Atualizado em:')
