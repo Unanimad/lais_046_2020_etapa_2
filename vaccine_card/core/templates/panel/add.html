@@ -23,9 +23,23 @@
                         </button>
                         <button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i> Limpar</button>
                     </div>
-
                 </div>
             </div>
+
+            {% if form_aux %}
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <strong>{{ form_aux_title }}</strong>
+                        </div>
+                        <div class="card-body">
+                            {{ form_aux.as_p }}
+                        </div>
+
+                    </div>
+                </div>
+            {% endif %}
+
         </div>
     </form>
 {% endblock %}
