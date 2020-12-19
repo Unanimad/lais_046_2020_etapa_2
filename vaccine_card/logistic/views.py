@@ -3,19 +3,19 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 
 from vaccine_card.core.utils import dump_json
-
-from .forms import HealthCenterForm, AddressForm
-from .models import HealthCenter
+from .forms import HealthCenterForm, AddressForm, StockForm
+from .models import HealthCenter, VaccineStock, Stock
 
 
 @login_required
 def health_centers(request):
-    template_name = 'panel/list.html'
+    template_name = 'logistic/list_health_center.html'
 
     context = {
         'head_title': HealthCenter._meta.verbose_name_plural,
         'instances': HealthCenter.objects.all(),
         'breadcrump': [{'name': HealthCenter._meta.verbose_name_plural, 'link': 'panel:vaccination:vaccines'}],
+        'stock_url': 'panel:logistic:health_center_stock',
         'add_url': 'panel:logistic:add_health_center',
         'view_url': 'panel:logistic:health_center',
         'edit_url': 'panel:vaccination:edit_vaccine',
@@ -27,7 +27,7 @@ def health_centers(request):
 
 @login_required
 def add_health_center(request):
-    template_name = 'panel/add.html'
+    template_name = 'default/add.html'
 
     form = HealthCenterForm(auto_id=False)
     form_aux = AddressForm(auto_id=False)
@@ -62,7 +62,7 @@ def add_health_center(request):
 
 @login_required
 def health_center(request, pk):
-    template_name = 'panel/add.html'
+    template_name = 'default/add.html'
 
     instance = HealthCenter.objects.get(pk=pk)
 
@@ -90,6 +90,55 @@ def del_health_center(request):
             context = {
                 'err': False,
                 'text': 'Objeto deletado com sucesso.'
+            }
+
+        return dump_json(context)
+
+
+@login_required
+def health_center_stock(request, pk):
+    template_name = 'logistic/health_center_stock.html'
+
+    instance = HealthCenter.objects.get(pk=pk)
+
+    instances = VaccineStock.objects.filter(stock__health_center=instance)
+
+    form = StockForm(auto_id=False)
+
+    context = {
+        'instance': instance,
+        'head_title': 'Estoque',
+        'instances': instances,
+        'form': form
+    }
+
+    return render(request, template_name, context)
+
+
+@login_required
+def receive_vaccine(request):
+    if request.method == 'POST':
+        form = StockForm(request.POST)
+        # form.fields = HealthCenter.objects.filter(pk=int())
+
+        if form.is_valid():
+            health_center = HealthCenter.objects.get(pk=form.cleaned_data['health_center'])
+            # vaccine = Vaccine.objects.get(pk=form.cl)
+            stock, created = Stock.objects.update_or_create(lot=form.cleaned_data['lot'], health_center=health_center)
+            for vaccine in form.cleaned_data['vaccines']:
+                VaccineStock.objects.create(amount=form.cleaned_data['amount'], remaining=form.cleaned_data['amount'],
+                                            stock=stock, vaccine=vaccine)
+
+            # VaccineStock.objects.get_or_create()
+
+            context = {
+                'err': False,
+                'text': 'Inserido com sucesso.'
+            }
+        else:
+            context = {
+                'err': True,
+                'text': 'Falha ao inserir o lote.'
             }
 
         return dump_json(context)

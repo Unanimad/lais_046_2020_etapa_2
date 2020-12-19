@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import HealthCenter, Address
+from .models import HealthCenter, Address, VaccineStock, Stock
 
 
 class HealthCenterForm(forms.ModelForm):
@@ -24,4 +24,16 @@ class AddressForm(forms.ModelForm):
             'numero': forms.TextInput(attrs={'class': 'form-control'}),
             'complemento': forms.TextInput(attrs={'class': 'form-control'}),
             'bairro': forms.TextInput(attrs={'class': 'form-control'}),
+        }
+
+
+class StockForm(forms.ModelForm):
+    amount = forms.CharField(label='Quantidade', widget=forms.NumberInput(attrs={'class': 'form-control'}))
+    health_center = forms.Field(widget=forms.HiddenInput())
+
+    class Meta:
+        model = Stock
+        fields = ['lot', 'amount', 'vaccines']
+        widgets = {
+            'lot': forms.NumberInput(attrs={'class': 'form-control'}),
         }

@@ -7,7 +7,7 @@ from django.urls import reverse
 
 
 def login(request):
-    template_name = 'panel/login.html'
+    template_name = 'default/login.html'
 
     if request.method == 'POST':
         username = request.POST['username']
@@ -40,7 +40,7 @@ def logout(request):
 
 @login_required
 def index(request):
-    template_name = 'panel/index.html'
+    template_name = 'default/index.html'
 
     context = {
         'head_title': 'Painel',
