@@ -52,6 +52,9 @@ class HealthCenter(models.Model):
         verbose_name = 'Estabelecimento de Saúde'
         verbose_name_plural = 'Estabelecimentos de Saúde'
 
+    def __str__(self):
+        return self.name
+
 
 class Stock(models.Model):
     lot = models.PositiveSmallIntegerField(verbose_name='Lote')
@@ -77,3 +80,6 @@ class VaccineStock(models.Model):
 
     class Meta:
         verbose_name = 'Estoque de Vacina'
+
+    def __str__(self):
+        return self.vaccine.name
