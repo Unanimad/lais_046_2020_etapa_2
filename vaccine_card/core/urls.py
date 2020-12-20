@@ -10,6 +10,7 @@ urlpatterns = [
 
     path('panel/logistic/', include('vaccine_card.logistic.urls', namespace='logistic')),
     path('panel/vaccination/', include('vaccine_card.vaccination.urls', namespace='vaccination')),
+    path('panel/schedule/', include('vaccine_card.scheduling.urls', namespace='scheduling')),
 
     path('app/', include('vaccine_card.app.urls', namespace='app')),
 ]
