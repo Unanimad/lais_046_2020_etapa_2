@@ -1,0 +1,60 @@
+{% extends 'patient_app/base.html' %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="input-group mb-3">
+            <span class="input-group-text"><i class="fas fa-search"></i></span>
+            <input type="text" class="form-control" id="filter" placeholder="Procurar" aria-label="Procurar"
+                   aria-describedby="basic-addon1">
+        </div>
+    </div>
+
+    <div class="row" id="searchArea">
+        {% for schedule in instances %}
+
+            <div class="col-md-6 mb-3">
+                <div class="bs-callout bs-callout-danger">
+                    <div class="row">
+                        <div class="col">
+                            <span class="badge bg-danger text-white mb-1">{{ schedule.date }}</span>
+                            <span class="badge bg-danger text-white"
+                                  style="display: block; white-space: break-spaces; text-align: left; ">{{ schedule.health_center }}</span>
+                            <hr/>
+                            <h5>{% for vaccine in schedule.vaccine.all %}{{ vaccine }}{% endfor %}</h5>
+                            <span>{% for vaccine in schedule.vaccine.all %}{{ vaccine.prevent_diseases }}{% endfor %}</span>
+                            <hr/>
+                            <span class="badge">{{ schedule.get_status_display }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+
+    </div>
+
+{% endblock %}
+
+{% block custom_js %}
+    <script>
+        $(function () {
+            const inputFilter = document.getElementById("filter");
+            const nodeSearch = document
+                .getElementById("searchArea")
+                .getElementsByTagName("div");
+
+            function SearchContent() {
+                const inputFilterValue = inputFilter.value.toLowerCase();
+
+                for (let node of nodeSearch) {
+                    node.innerText.toLowerCase().includes(inputFilterValue)
+                        ? (node.style.display = "block")
+                        : (node.style.display = "none");
+                }
+            }
+
+            inputFilter.addEventListener("keyup", SearchContent);
+
+        });
+    </script>
+{% endblock %}

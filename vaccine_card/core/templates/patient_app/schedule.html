@@ -31,11 +31,17 @@
 
 {% endblock %}
 {% block custom_js %}
+    <script src="{% static 'js/moment.min.js' %}"></script>
     <script src="{% static 'js/select2.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap-datetimepicker.min.js' %}"></script>
 
     <script>
         $(function () {
             $('select').select2();
+            $('#date').datetimepicker({
+                locale: 'pt-BR',
+                daysOfWeekDisabled: [0, 6]
+            });
         });
     </script>
 {% endblock %}

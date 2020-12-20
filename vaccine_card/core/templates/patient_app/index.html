@@ -6,17 +6,28 @@
         <div class="col-md-6 mb-5">
             <div class="card bg-primary text-white">
                 <div class="card-body">
-                    <a class="text-white" href="{% url 'panel:app:schedule' %}">
+                    <a class="text-white" href="{% url 'panel:app:patient_vaccine_card' %}">
                         <h5 class="card-title"><i class="fas fa-tasks"></i> Meu Cartão de Vacina</h5>
                     </a>
                 </div>
             </div>
         </div>
+
         <div class="col-md-6 mb-5">
             <div class="card bg-primary text-white">
                 <div class="card-body">
-                    <a class="text-white" href="{% url 'panel:app:patient_vaccine_card' %}">
-                        <h5 class="card-title"><i class="fas fa-calendar-check"></i> Agendar Vacinação</h5>
+                    <a class="text-white" href="{% url 'panel:app:patient_schedule' %}">
+                        <h5 class="card-title"><i class="fas fa-calendar-check"></i> Meus Agendamentos</h5>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 mb-5">
+            <div class="card bg-primary text-white">
+                <div class="card-body">
+                    <a class="text-white" href="{% url 'panel:app:add_schedule' %}">
+                        <h5 class="card-title"><i class="fas fa-calendar-alt"></i> Agendar Vacinação</h5>
                     </a>
                 </div>
             </div>
