@@ -32,10 +32,11 @@ def login(request):
     return render(request, template_name)
 
 
+@login_required
 def logout(request):
     auth_logout(request)
 
-    return redirect('/panel/login')
+    return redirect('/')
 
 
 @login_required
