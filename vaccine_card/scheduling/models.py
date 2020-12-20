@@ -1,3 +1,7 @@
+import os
+
+from django.conf import settings
+from django.core.mail import send_mail
 from django.db import models
 from simple_history.models import HistoricalRecords
 
@@ -27,6 +31,15 @@ class Event(models.Model):
 
     class Meta:
         verbose_name = 'Evento'
+
+    def __str__(self):
+        return self.status
+
+    def save(self, *args, **kwargs):
+        super(Event, self).save(*args, **kwargs)
+        send_mail('Sua vacina está agendada!',
+                  f'Você agendou vacina em {self.date} no {self.health_center} para {self.vaccine.all()}.',
+                  settings.EMAIL_HOST_USER, os.environ.get('EMAIL_RECIPIENT').split(';'))
 
 
 class Vaccination(models.Model):
