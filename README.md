@@ -71,11 +71,11 @@ qual pode fazer visualizar o cartão de vacina, agendar uma vacinação e verifi
 
 O Projeto Vacina+ está mantido seu _backend_ com a linguagem Python 3.7, sob o _framework_ Django 3.1. Além destes, o
 projeto inclui: [Django-rest-framework](https://www.django-rest-framework.org/) para o gerenciamento do _webservice_ e
-o [Django-simple-history](https://django-simple-history.readthedocs.io/en/latest/) para gerenciar o histórico de
+o [Django-simple-history](https://django-simple-history.readthedocs.io/en/latest/) para gerir o histórico de
 atualização do agendamento de vacinação.
 
 O _frontend_ foi desenvolvido utilizando HTML5, CSS e JS com suporte do
-_framework_ [Bootstrap4](https://getbootstrap.com/) e do [CoreUI](https://coreui.io/). Além deles, foi utilizados plugins
+_framework_ [Bootstrap4](https://getbootstrap.com/) e do [CoreUI](https://coreui.io/). Além deles, foram utilizados plugins
 que dão suporte, como: [Select2](https://select2.org/), [Toastr](https://github.com/CodeSeven/toastr)
 , [Momentjs](https://momentjs.com/), [Bootstrap-datapicker](https://bootstrap-datepicker.readthedocs.io/en/latest/),
 entre outros.
