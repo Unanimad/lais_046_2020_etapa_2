@@ -116,8 +116,9 @@ configurações do banco de dados podem ser definidas diretamente no arquivo set
 1. Testes automatizados;
 1. Cadastro de Dias e Horários possíveis para vacinação;
 1. Concluir os fluxos solicitados na avaliação;
+1. Carregamento de cidade com base no estado, assim como na _view_ de agendamento do paciente;
 1. Login com Google OAuth2;
 1. Construção do Websocket;
 1. Implementação do Push Notification;
 1. Criar blocos de agendamento;
-1. Relatórios que deêm suporte a melhoria do agendamento e da vacinação.
+1. Relatórios que dêem suporte a melhoria do agendamento e da vacinação.
