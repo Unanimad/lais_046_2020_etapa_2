@@ -7,7 +7,8 @@ O Projeto Vacina+ permite que os estabelecimentos de saúde tenham controle e fo
 agendamento de vacinação da população. Até o presente momento, está habilitado o gerenciamento de estabelecimentos de
 saúde, vacinas, estoques e agendamentos.
 
-O Diagrama de Entidade e Relacionamento do projeto está disponível [aqui](SQL/vaccine_card.png).
+O Diagrama de Entidade e Relacionamento do projeto está disponível [aqui](SQL/vaccine_card.png), e alguns SQL de 
+consultas estão disponíveis no diretório [SQL](SQL/).
 
 ---
 
