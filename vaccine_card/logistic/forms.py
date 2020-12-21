@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import HealthCenter, Address, VaccineStock, Stock
+from .models import HealthCenter, Address, Stock, State
 
 
 class HealthCenterForm(forms.ModelForm):
@@ -15,6 +15,7 @@ class HealthCenterForm(forms.ModelForm):
 
 
 class AddressForm(forms.ModelForm):
+    state = forms.ModelChoiceField(queryset=State.objects.all(), label='Estado')
     class Meta:
         model = Address
         fields = ['cep', 'logradouro', 'numero', 'complemento', 'bairro', 'state', 'city']
