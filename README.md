@@ -7,11 +7,10 @@ O Projeto Vacina+ permite que os estabelecimentos de saúde tenham controle e fo
 agendamento de vacinação da população. Até o presente momento, está habilitado o gerenciamento de estabelecimentos de
 saúde, vacinas, estoques e agendamentos.
 
-O Diagrama de Entidade e Relacionamento pode ser visualizado a seguir: ![der_vaccine_card](SQL/vaccine_card.png)
-
-Ou por [aqui](SQL/vaccine_card.png).
+O Diagrama de Entidade e Relacionamento do projeto está disponível [aqui](SQL/vaccine_card.png).
 
 ---
+
 ## Acesso ao Heroku
 
 Acesse [aqui o projeto hospedado no Heroku](https://warm-wildwood-36848.herokuapp.com/) em sua versão de
@@ -23,7 +22,8 @@ desenvolvimento. Ou utilize o link a seguir:
 
 ---
 
-Por estar utilizando um Free Dyno, o sistema pode ficar offline em alguns momentos. Caso isso aconteça, por favor nos comunique!
+Por estar utilizando um Free Dyno, o sistema pode ficar offline em alguns momentos. Caso isso aconteça, por favor nos
+comunique!
 
 ---
 
@@ -69,19 +69,23 @@ qual pode fazer visualizar o cartão de vacina, agendar uma vacinação e verifi
 
 ### Tecnologias
 
-O Projeto Vacina+ está mantido seu _backend_ com a linguagem Python 3.7, sob o framework Django 3.1. Além destes, o
-projeto inclui: [Django-rest-framework](https://www.django-rest-framework.org/) para o gerenciamento do webservice e o [Django-simple-history](https://django-simple-history.readthedocs.io/en/latest/) para gerenciar o
-histórico de atualização do agendamento de vacinação.
+O Projeto Vacina+ está mantido seu _backend_ com a linguagem Python 3.7, sob o _framework_ Django 3.1. Além destes, o
+projeto inclui: [Django-rest-framework](https://www.django-rest-framework.org/) para o gerenciamento do _webservice_ e
+o [Django-simple-history](https://django-simple-history.readthedocs.io/en/latest/) para gerir o histórico de
+atualização do agendamento de vacinação.
 
-O _frontend_ foi desenvolvido utilizando HTML5, CSS e JS com suporte do framework [Bootstrap4](https://getbootstrap.com/) e do [CoreUI](https://coreui.io/).
+O _frontend_ foi desenvolvido utilizando HTML5, CSS e JS com suporte do
+_framework_ [Bootstrap4](https://getbootstrap.com/) e do [CoreUI](https://coreui.io/). Além deles, foram utilizados plugins
+que dão suporte, como: [Select2](https://select2.org/), [Toastr](https://github.com/CodeSeven/toastr)
+, [Momentjs](https://momentjs.com/), [Bootstrap-datapicker](https://bootstrap-datepicker.readthedocs.io/en/latest/),
+entre outros.
 
 ### Primeiros passos
 
-Inicialmente, é necessário criar o ambiente virtual e, após esse passo, executar o seguinte comando:
-
+Inicialmente, é necessário criar o ambiente virtual e então executar o seguinte comando para instalar as dependências do projeto Python:
 > pip install -r requeriments.txt
 
-Efetue a migração dos _models_ para o banco de dados:
+Configure o acesso ao banco de dados e então efetue a migração dos _models_:
 > python manage.py migrate
 
 E, então inicie o projeto com o seguinte comando:
@@ -91,8 +95,11 @@ Caso o navegador não abra o projeto, clique no link a seguir ou abra uma nova a
 > http://localhost:8000
 
 ---
+
 #### Opcional
-Caso queira carregar as informações dos estados e cidades, pode utilizar o comando a seguir na raiz do projeto, após ter executado as migrações:
+
+Caso queira carregar as informações dos estados e cidades, pode utilizar o comando a seguir na raiz do projeto, após ter
+executado as migrações:
 > python manage.py create_cluster
 
 ---
@@ -105,6 +112,8 @@ Lembre de configurar as variáveis de ambiente para que o projeto funcione corre
 
 Para criar os containers e executar o projeto, basta digitar na raiz no diretório que está o arquivo **docker-compose.yml**:
 > docker-compose up -d —build
+
+---
 
 ## Variáveis de Ambiente
 
@@ -132,6 +141,7 @@ configurações do banco de dados podem ser definidas diretamente no arquivo set
 1. Concluir os fluxos solicitados na avaliação;
 1. Carregamento de cidade com base no estado, assim como na _view_ de agendamento do paciente;
 1. Login com Google OAuth2;
+1. Perfis de acesso;
 1. Construção do Websocket;
 1. Implementação do Push Notification;
 1. Criar blocos de agendamento;
