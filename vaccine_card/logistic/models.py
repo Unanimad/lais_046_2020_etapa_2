@@ -31,7 +31,7 @@ class Address(models.Model):
     bairro = models.CharField(max_length=150, verbose_name='Bairro')
     cep = models.CharField(max_length=8, verbose_name='CEP')
 
-    state = models.ForeignKey(State, on_delete=models.CASCADE, verbose_name=State._meta.verbose_name)
+    # state = models.ForeignKey(State, on_delete=models.CASCADE, verbose_name=State._meta.verbose_name)
     city = models.ForeignKey(City, on_delete=models.CASCADE, verbose_name=City._meta.verbose_name)
 
     class Meta:

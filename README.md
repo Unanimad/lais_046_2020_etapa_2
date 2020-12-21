@@ -7,6 +7,13 @@ O Projeto Vacina+ permite que os estabelecimentos de saúde tenham controle e fo
 agendamento de vacinação da população. Até o presente momento, está habilitado o gerenciamento de estabelecimentos de
 saúde, vacinas, estoques e agendamentos.
 
+O Diagrama de Entidade e Relacionamento pode ser visualizado a seguir: ![der_vaccine_card](SQL/vaccine_card.png)
+
+Ou por [aqui](SQL/vaccine_card.png).
+
+---
+## Acesso ao Heroku
+
 Acesse [aqui o projeto hospedado no Heroku](https://warm-wildwood-36848.herokuapp.com/) em sua versão de
 desenvolvimento. Ou utilize o link a seguir:
 > https://warm-wildwood-36848.herokuapp.com/
@@ -56,6 +63,8 @@ os dados referentes as vacinas e os reforços das vacinas.
 O app **App** é responsável por gerenciar as _views_ e as _urls_ que dão acesso à visualização por parte do paciente, no
 qual pode fazer visualizar o cartão de vacina, agendar uma vacinação e verificar os agendamentos efetuados.
 
+---
+
 ## Configuração do Projeto
 
 ### Tecnologias
@@ -94,6 +103,9 @@ Caso tenha habilidade com o Docker, o projeto possui a configuração para criar
 dados!
 Lembre de configurar as variáveis de ambiente para que o projeto funcione corretamente, tá?
 
+Para criar os containers e executar o projeto, basta digitar na raiz no diretório que está o arquivo **docker-compose.yml**:
+> docker-compose up -d —build
+
 ## Variáveis de Ambiente
 
 | Variavel de Ambiente | Possíveis valores |
@@ -108,8 +120,10 @@ Lembre de configurar as variáveis de ambiente para que o projeto funcione corre
 | EMAIL_RECIPIENT | recipient@gmail.com |
 | DATABASE_URL | URL de conexão com o banco de dados* |
 
-[*] a variável de ambiente DATABASE_URL é utilizado apenas no _deploy_, caso queira utilizar a versão local, as
+[*] A variável de ambiente DATABASE_URL é utilizado apenas no _deploy_, caso queira utilizar a versão local, as
 configurações do banco de dados podem ser definidas diretamente no arquivo settings/local.py.
+
+---
 
 ## Implementações futuras
 
@@ -121,4 +135,4 @@ configurações do banco de dados podem ser definidas diretamente no arquivo set
 1. Construção do Websocket;
 1. Implementação do Push Notification;
 1. Criar blocos de agendamento;
-1. Relatórios que dêem suporte a melhoria do agendamento e da vacinação.
+1. Relatórios que deem suporte a melhoria do agendamento e da vacinação.
